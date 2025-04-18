@@ -44,10 +44,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridFamiliya = new System.Windows.Forms.DataGridView();
             this.srcBtn = new System.Windows.Forms.Button();
+            this.dataGridWorker = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFamiliya)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWorker)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGrid
@@ -104,6 +107,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.dataGridWorker);
             this.panel1.Controls.Add(this.konetsPick);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.addBtn);
@@ -120,27 +125,27 @@
             // 
             // konetsPick
             // 
-            this.konetsPick.Location = new System.Drawing.Point(667, 103);
+            this.konetsPick.Location = new System.Drawing.Point(781, 103);
             this.konetsPick.Name = "konetsPick";
-            this.konetsPick.Size = new System.Drawing.Size(313, 22);
+            this.konetsPick.Size = new System.Drawing.Size(199, 22);
             this.konetsPick.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(665, 73);
+            this.label4.Location = new System.Drawing.Point(776, 73);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(309, 27);
+            this.label4.Size = new System.Drawing.Size(207, 27);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Выберите дату конца аренды";
+            this.label4.Text = "Дата конца аренды";
             // 
             // addBtn
             // 
             this.addBtn.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addBtn.Location = new System.Drawing.Point(667, 131);
+            this.addBtn.Location = new System.Drawing.Point(781, 131);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(313, 101);
+            this.addBtn.Size = new System.Drawing.Size(199, 101);
             this.addBtn.TabIndex = 7;
             this.addBtn.Text = "Внести данные";
             this.addBtn.UseVisualStyleBackColor = true;
@@ -148,26 +153,26 @@
             // 
             // nachaloPick
             // 
-            this.nachaloPick.Location = new System.Drawing.Point(667, 30);
+            this.nachaloPick.Location = new System.Drawing.Point(781, 30);
             this.nachaloPick.Name = "nachaloPick";
-            this.nachaloPick.Size = new System.Drawing.Size(313, 22);
+            this.nachaloPick.Size = new System.Drawing.Size(211, 22);
             this.nachaloPick.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(662, 1);
+            this.label3.Location = new System.Drawing.Point(776, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(318, 27);
+            this.label3.Size = new System.Drawing.Size(216, 27);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Выберите дату начала аренды";
+            this.label3.Text = "Дата начала аренды";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(331, 2);
+            this.label2.Location = new System.Drawing.Point(209, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(279, 27);
             this.label2.TabIndex = 3;
@@ -176,18 +181,19 @@
             // dataGridNomer
             // 
             this.dataGridNomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridNomer.Location = new System.Drawing.Point(336, 30);
+            this.dataGridNomer.Location = new System.Drawing.Point(261, 30);
             this.dataGridNomer.Name = "dataGridNomer";
+            this.dataGridNomer.RowHeadersVisible = false;
             this.dataGridNomer.RowHeadersWidth = 51;
             this.dataGridNomer.RowTemplate.Height = 24;
-            this.dataGridNomer.Size = new System.Drawing.Size(274, 515);
+            this.dataGridNomer.Size = new System.Drawing.Size(175, 515);
             this.dataGridNomer.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(6, 2);
+            this.label1.Location = new System.Drawing.Point(31, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 27);
             this.label1.TabIndex = 1;
@@ -198,9 +204,10 @@
             this.dataGridFamiliya.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridFamiliya.Location = new System.Drawing.Point(11, 30);
             this.dataGridFamiliya.Name = "dataGridFamiliya";
+            this.dataGridFamiliya.RowHeadersVisible = false;
             this.dataGridFamiliya.RowHeadersWidth = 51;
             this.dataGridFamiliya.RowTemplate.Height = 24;
-            this.dataGridFamiliya.Size = new System.Drawing.Size(292, 515);
+            this.dataGridFamiliya.Size = new System.Drawing.Size(192, 515);
             this.dataGridFamiliya.TabIndex = 0;
             // 
             // srcBtn
@@ -213,6 +220,27 @@
             this.srcBtn.Text = "Совершить поиск";
             this.srcBtn.UseVisualStyleBackColor = true;
             this.srcBtn.Click += new System.EventHandler(this.srcBtn_Click);
+            // 
+            // dataGridWorker
+            // 
+            this.dataGridWorker.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridWorker.Location = new System.Drawing.Point(494, 30);
+            this.dataGridWorker.Name = "dataGridWorker";
+            this.dataGridWorker.RowHeadersVisible = false;
+            this.dataGridWorker.RowHeadersWidth = 51;
+            this.dataGridWorker.RowTemplate.Height = 24;
+            this.dataGridWorker.Size = new System.Drawing.Size(175, 515);
+            this.dataGridWorker.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(494, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(167, 27);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Кто добавляет?";
             // 
             // dataForm
             // 
@@ -235,6 +263,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFamiliya)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWorker)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,5 +287,7 @@
         private System.Windows.Forms.DateTimePicker konetsPick;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button srcBtn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dataGridWorker;
     }
 }

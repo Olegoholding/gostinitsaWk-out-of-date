@@ -65,10 +65,11 @@ namespace gostinitsaWk.anotherPage
                             FROM postoyalsi"},
                 {"nomerInfo",@"SELECT id AS Номер, nomer AS ПорядковыйНомер, tipNomera AS ТипНомера, cost AS Стоимость 
                             FROM nomerInfo"},
-                {"journal",@"SELECT journal.id AS Номер, postoyalsi.imya AS Имя, postoyalsi.familiya AS Фамилия, postoyalsi.telephone AS Телефон, journal.dateNachala AS ДатаНачалаАренды, journal.dateKontsa AS ДатаКонцаАренды, nomerInfo.nomer AS ПорядковыйНомерНомера 
-                            FROM ((journal
+                {"journal",@"SELECT journal.id AS Номер, postoyalsi.imya AS Имя, postoyalsi.familiya AS Фамилия, postoyalsi.telephone AS Телефон, journal.dateNachala AS ДатаНачалаАренды, journal.dateKontsa AS ДатаКонцаАренды, nomerInfo.nomer AS ПорядковыйНомерНомера, rabochie.familiya AS ФамилияПринимающего, rabochie.imya AS ИмяПринимающего
+                            FROM (((journal
                             LEFT JOIN nomerInfo ON journal.id_nomera = nomerInfo.id)
-                            LEFT JOIN postoyalsi ON journal.id_postoyaltsa = postoyalsi.id)"}
+                            LEFT JOIN postoyalsi ON journal.id_postoyaltsa = postoyalsi.id)
+                            LEFT JOIN rabochie ON journal.id_rabochego = rabochie.id)"}
             };
             if (tables.TryGetValue(mainPage.btnName, out string query))
             {
@@ -97,8 +98,9 @@ namespace gostinitsaWk.anotherPage
             else
             {
                 panel1.Show();
-                string _query = "SELECT id AS Номер, familiya AS Фамилия FROM postoyalsi";
+                string _query = "SELECT id AS Номер, familiya AS Фамилия, imya AS Имя FROM postoyalsi";
                 string __query = "SELECT id AS Номер, nomer AS НомерКомнаты FROM nomerInfo";
+                string ___query = "SELECT id AS Номер, familiya AS Фамилия, imya AS Имя FROM rabochie";
                 using (OleDbConnection conn = new OleDbConnection(infComponent.getConnStr))
                 {
                     try
@@ -121,6 +123,16 @@ namespace gostinitsaWk.anotherPage
                             adapter.Fill(dataTable);
                             dataGridNomer.DataSource = dataTable;
                             dataGridNomer.AutoGenerateColumns = false;
+                        }
+                        conn.Close();
+                        conn.Open();
+                        using (OleDbCommand command = new OleDbCommand(___query, conn))
+                        {
+                            OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            dataGridWorker.DataSource = dataTable;
+                            dataGridWorker.AutoGenerateColumns = false;
                         }
                         conn.Close();
                     }
@@ -210,8 +222,9 @@ namespace gostinitsaWk.anotherPage
 
             int id = int.Parse(dataGridFamiliya.Rows[dataGridFamiliya.CurrentRow.Index].Cells["Номер"].Value.ToString());
             int _id = int.Parse(dataGridNomer.Rows[dataGridNomer.CurrentRow.Index].Cells["Номер"].Value.ToString());
+            int __id = int.Parse(dataGridWorker.Rows[dataGridWorker.CurrentRow.Index].Cells["Номер"].Value.ToString());
 
-            string query = @"INSERT INTO journal (id_postoyaltsa, dateNachala, dateKontsa, id_nomera) VALUES(@User_id, @Production_id, @prodType_id, @Cost)";
+            string query = @"INSERT INTO journal (id_postoyaltsa, dateNachala, dateKontsa, id_nomera, id_rabochego) VALUES(@User_id, @Production_id, @prodType_id, @Cost, @rabochiy)";
             using (OleDbConnection conn = new OleDbConnection(infComponent.getConnStr))
             {
                 conn.Open();
@@ -221,6 +234,7 @@ namespace gostinitsaWk.anotherPage
                     cmd.Parameters.AddWithValue("@Production_id", nachalo);
                     cmd.Parameters.AddWithValue("@prodType_id", konets);
                     cmd.Parameters.AddWithValue("@Cost", _id);
+                    cmd.Parameters.AddWithValue("@rabochiy", __id);
                     cmd.ExecuteNonQuery();
                     //MessageBox.Show($"{id}, {_id}");
                 }
